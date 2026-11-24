@@ -241,7 +241,7 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
     const getSourceBadge = (event: RebalanceEvent) => {
         if (event.onChainConfirmed || event.eventSource === 'onchain') {
             return (
-                <span className="text-xs bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 px-2 py-1 rounded flex items-center">
+                <span className="text-xs bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 px-2 py-1 rounded flex items-center whitespace-nowrap">
                     <Link className="w-3 h-3 mr-1" />
                     {rebalanceHistoryCopy.onChain}
                 </span>
@@ -249,13 +249,13 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
         }
         if (event.isSimulated || event.eventSource === 'simulated') {
             return (
-                <span className="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 px-2 py-1 rounded">
+                <span className="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 px-2 py-1 rounded whitespace-nowrap">
                     {rebalanceHistoryCopy.simulated}
                 </span>
             )
         }
         return (
-            <span className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-1 rounded">
+            <span className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-1 rounded whitespace-nowrap">
                 {rebalanceHistoryCopy.offChain}
             </span>
         )
@@ -318,18 +318,18 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
     }
 
     return (
-        <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm" aria-labelledby="rebalance-history-heading">
+        <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm min-w-0" aria-labelledby="rebalance-history-heading">
             <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">
                 {announcement}
             </div>
-            <header className="p-6 border-b border-gray-200 dark:border-gray-700">
-                <div className="flex items-center justify-between">
-                    <div>
-                        <h2 id="rebalance-history-heading" className="text-lg font-semibold text-gray-900 dark:text-white">{rebalanceHistoryCopy.title}</h2>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{rebalanceHistoryCopy.subtitle}</p>
+            <header className="p-2 border-b border-gray-200 dark:border-gray-700 sm:p-6">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="min-w-0">
+                        <h2 id="rebalance-history-heading" className="text-lg font-semibold text-gray-900 dark:text-white break-words">{rebalanceHistoryCopy.title}</h2>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 break-words">{rebalanceHistoryCopy.subtitle}</p>
                     </div>
 
-                    <div className="flex items-center space-x-3">
+                    <div className="flex flex-wrap items-center gap-2 sm:justify-end">
                         <button
                             type="button"
                             onClick={exportHistoryCSV}
@@ -338,39 +338,39 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
                         >
                             {rebalanceHistoryCopy.exportCsv}
                         </button>
-
-                        {error && !errorDismissed && (
-                            <div
-                                role="alert"
-                                aria-live="assertive"
-                                aria-atomic="true"
-                                className="flex items-center gap-2 text-sm text-red-600 bg-red-50 dark:bg-red-900/30 px-3 py-1.5 rounded"
-                            >
-                                <span>{error}</span>
-                                <button
-                                    type="button"
-                                    onClick={handleRetry}
-                                    disabled={Boolean(isFetching)}
-                                    aria-label={rebalanceHistoryCopy.retryHistory}
-                                    className="font-medium underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded px-1 disabled:opacity-50"
-                                >
-                                    {isFetching ? rebalanceHistoryCopy.retrying : rebalanceHistoryCopy.retry}
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={handleDismissError}
-                                    aria-label={rebalanceHistoryCopy.dismissError}
-                                    className="font-medium underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded px-1"
-                                >
-                                    {rebalanceHistoryCopy.dismiss}
-                                </button>
-                            </div>
-                        )}
                     </div>
                 </div>
 
+                {error && !errorDismissed && (
+                    <div
+                        role="alert"
+                        aria-live="assertive"
+                        aria-atomic="true"
+                        className="mt-4 flex flex-wrap items-center gap-2 text-sm text-red-600 bg-red-50 dark:bg-red-900/30 px-3 py-2 rounded"
+                    >
+                        <span className="min-w-0 break-words">{error}</span>
+                        <button
+                            type="button"
+                            onClick={handleRetry}
+                            disabled={Boolean(isFetching)}
+                            aria-label={rebalanceHistoryCopy.retryHistory}
+                            className="font-medium underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded px-1 disabled:opacity-50"
+                        >
+                            {isFetching ? rebalanceHistoryCopy.retrying : rebalanceHistoryCopy.retry}
+                        </button>
+                        <button
+                            type="button"
+                            onClick={handleDismissError}
+                            aria-label={rebalanceHistoryCopy.dismissError}
+                            className="font-medium underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded px-1"
+                        >
+                            {rebalanceHistoryCopy.dismiss}
+                        </button>
+                    </div>
+                )}
+
                 {history.length === 0 ? (
-                    <div className="p-6 text-center text-gray-500 dark:text-gray-400" role="status">
+                    <div className="p-2 text-center text-gray-500 dark:text-gray-400 sm:p-6" role="status">
                         <Clock className="w-12 h-12 mx-auto mb-4 text-gray-300 dark:text-gray-600" aria-hidden="true" />
                         <p>{rebalanceHistoryCopy.emptyTitle}</p>
                         <p className="text-sm mt-1">{rebalanceHistoryCopy.emptyDetail}</p>
@@ -397,23 +397,23 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
                                 role="listitem"
                                 tabIndex={0}
                                 aria-label={eventLabel}
-                                className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-inset rounded-lg"
+                                className="p-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-inset rounded-lg sm:p-6"
                             >
-                                <div className="flex items-start justify-between">
-                                    <div className="flex items-start space-x-4">
+                                <div className="flex items-start gap-2 sm:gap-4">
+                                    <div className="flex min-w-0 flex-1 items-start gap-2 sm:gap-4">
                                         <div className="flex-shrink-0">
-                                            <div className={`w-10 h-10 ${getStatusBgColor(event.status)} rounded-full flex items-center justify-center`}>
+                                            <div className={`h-[40px] w-[40px] ${getStatusBgColor(event.status)} rounded-full flex items-center justify-center`}>
                                                 {getStatusIcon(event.status)}
                                             </div>
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <div className="flex items-center space-x-2 mb-2">
-                                                <span className="font-medium text-gray-900 dark:text-white">{event.trigger}</span>
-                                                <span className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">
+                                            <div className="flex flex-wrap items-center gap-2 mb-2">
+                                                <span className="font-medium text-gray-900 dark:text-white break-words">{event.trigger}</span>
+                                                <span className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded whitespace-nowrap">
                                                     {event.trades} trade{event.trades > 1 ? 's' : ''}
                                                 </span>
                                                 {event.details?.riskLevel && (
-                                                    <span className={`text-xs px-2 py-1 rounded flex items-center ${getRiskLevelColor(event.details.riskLevel)}`}>
+                                                    <span className={`text-xs px-2 py-1 rounded flex items-center whitespace-nowrap ${getRiskLevelColor(event.details.riskLevel)}`}>
                                                         {event.details.riskLevel === 'high' ? (
                                                             <TrendingDown className="w-3 h-3 mr-1" />
                                                         ) : event.details.riskLevel === 'medium' ? (
@@ -425,7 +425,7 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
                                                     </span>
                                                 )}
                                                 {event.details?.chain && (
-                                                    <span className="text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 px-2 py-1 rounded flex items-center">
+                                                    <span className="text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 px-2 py-1 rounded flex items-center whitespace-nowrap">
                                                         <Link className="w-3 h-3 mr-1" />
                                                         {event.details.chain}
                                                     </span>
@@ -434,21 +434,21 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
                                             </div>
 
                                             {/* Enhanced date and time display */}
-                                            <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-2">
-                                                <div className="flex items-center">
+                                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                                <div className="flex flex-wrap items-center gap-x-1">
                                                     <Calendar className="w-4 h-4 mr-1" />
                                                     <span className="font-medium">{dateFormatted}</span>
-                                                    <span className="mx-1">at</span>
+                                                    <span>at</span>
                                                     <span>{timeFormatted}</span>
                                                 </div>
-                                                <span className="text-gray-300 dark:text-gray-600">•</span>
+                                                <span className="hidden text-gray-300 dark:text-gray-600 sm:inline">•</span>
                                                 <div className="flex items-center">
                                                     <Clock className="w-4 h-4 mr-1" />
                                                     {formatTimestamp(event.timestamp)}
                                                 </div>
                                             </div>
 
-                                            <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 dark:text-gray-400 mb-2">
                                                 <span>Gas: {event.gasUsed}</span>
                                                 {event.details?.gasFeeUsd != null && (
                                                     <span>(~${event.details.gasFeeUsd.toFixed(4)})</span>
@@ -469,27 +469,27 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
                                             {(event.details?.gasBreakdown?.length ?? 0) > 0 && (
                                                 <div className="text-xs text-gray-600 dark:text-gray-400 mb-2">
                                                     {event.details?.gasWarning && (
-                                                        <div className="text-red-600 dark:text-red-400 mb-1 font-medium">High gas warning ({'>'} 0.5 XLM)</div>
+                                                        <div className="text-red-600 dark:text-red-400 mb-1 font-medium break-words">High gas warning ({'>'} 0.5 XLM)</div>
                                                     )}
                                                     {event.details?.gasBreakdown?.map((item) => (
-                                                        <div key={item.tradeId} className="flex justify-between">
-                                                            <span>{item.tradeId}: {item.fromAsset ?? '—'} → {item.toAsset ?? '—'}</span>
-                                                            <span>{item.feeXlm.toFixed(4)} XLM</span>
+                                                        <div key={item.tradeId} className="flex justify-between gap-2">
+                                                            <span className="min-w-0 break-words">{item.tradeId}: {item.fromAsset ?? '—'} → {item.toAsset ?? '—'}</span>
+                                                            <span className="flex-shrink-0 whitespace-nowrap">{item.feeXlm.toFixed(4)} XLM</span>
                                                         </div>
                                                     ))}
                                                 </div>
                                             )}
 
                                             {/* Enhanced badges */}
-                                            <div className="flex items-center space-x-2 mb-2">
+                                            <div className="flex flex-wrap items-center gap-2 mb-2">
                                                 {event.details?.volatilityDetected && (
-                                                    <span className="text-xs bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-300 px-2 py-1 rounded flex items-center">
+                                                    <span className="text-xs bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-300 px-2 py-1 rounded flex items-center whitespace-nowrap">
                                                         <TrendingDown className="w-3 h-3 mr-1" />
                                                         High Volatility
                                                     </span>
                                                 )}
                                                 {event.details?.performanceImpact && (
-                                                    <span className={`text-xs px-2 py-1 rounded flex items-center ${event.details.performanceImpact === 'positive'
+                                                    <span className={`text-xs px-2 py-1 rounded flex items-center whitespace-nowrap ${event.details.performanceImpact === 'positive'
                                                         ? 'bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300'
                                                         : event.details.performanceImpact === 'negative'
                                                             ? 'bg-red-100 dark:bg-red-900/40 text-red-800 dark:text-red-300'
@@ -504,7 +504,7 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
                                                     </span>
                                                 )}
                                                 {event.details?.priceDirection && (
-                                                    <span className={`text-xs px-2 py-1 rounded flex items-center ${event.details.priceDirection === 'up'
+                                                    <span className={`text-xs px-2 py-1 rounded flex items-center whitespace-nowrap ${event.details.priceDirection === 'up'
                                                         ? 'bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300'
                                                         : 'bg-red-100 dark:bg-red-900/40 text-red-800 dark:text-red-300'
                                                         }`}>
@@ -519,7 +519,7 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
                                             </div>
 
                                             {(event.details?.actualSlippageBps != null || event.details?.estimatedSlippageBps != null) && (
-                                                <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                                                <div className="text-sm text-gray-600 dark:text-gray-400 mb-2 break-words">
                                                     Slippage: {event.details.actualSlippageBps != null ? `${(event.details.actualSlippageBps / 100).toFixed(2)}%` : '—'} actual
                                                     {event.details.estimatedSlippageBps != null && ` (${(event.details.estimatedSlippageBps / 100).toFixed(2)}% max)`}
                                                     {event.details?.slippageExceededTolerance && (
@@ -528,25 +528,25 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
                                                 </div>
                                             )}
                                             {event.details?.reason && (
-                                                <div className="text-sm text-gray-600 dark:text-gray-400 italic mb-2">
+                                                <div className="text-sm text-gray-600 dark:text-gray-400 italic mb-2 break-words">
                                                     {event.details.reason}
                                                 </div>
                                             )}
 
                                             {event.details?.fromAsset && event.details?.toAsset && (
-                                                <div className="flex items-center text-sm">
-                                                    <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded text-xs mr-2">
+                                                <div className="flex flex-wrap items-center gap-2 text-sm">
+                                                    <span className="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded text-xs">
                                                         {event.details.fromAsset}
                                                     </span>
-                                                    <ArrowRight className="w-3 h-3 text-gray-400 mx-1" />
-                                                    <span className="px-2 py-1 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded text-xs ml-2">
+                                                    <ArrowRight className="w-3 h-3 text-gray-400" />
+                                                    <span className="px-2 py-1 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded text-xs">
                                                         {event.details.toAsset}
                                                     </span>
                                                 </div>
                                             )}
                                         </div>
                                     </div>
-                                    <ArrowRight className="w-4 h-4 text-gray-400 mt-2" aria-hidden="true" />
+                                    <ArrowRight className="hidden w-4 h-4 flex-shrink-0 text-gray-400 mt-2 sm:block" aria-hidden="true" />
                                 </div>
                             </div>
                         )
@@ -557,8 +557,8 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
 
             {history.length > 0 && (
                 <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
+                    <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+                        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center text-sm text-gray-600 dark:text-gray-400 sm:justify-start sm:text-left">
                             <span>{rebalanceHistoryCopy.showing(history.length, totalCount)}</span>
                             <div className="hidden md:flex items-center space-x-4">
                                 <div className="flex items-center">
@@ -573,24 +573,24 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
                         </div>
 
                         {totalPages > 1 && (
-                            <nav aria-label={rebalanceHistoryCopy.paginationLabel} className="flex items-center space-x-2">
+                            <nav aria-label={rebalanceHistoryCopy.paginationLabel} className="flex max-w-full flex-wrap items-center justify-center gap-2">
                                 <button
                                     type="button"
                                     onClick={() => handlePageChange(Math.max(1, page - 1))}
                                     disabled={page === 1}
                                     aria-label={rebalanceHistoryCopy.previousPage}
-                                    className="p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                    className="flex-shrink-0 p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                                 >
                                     <ArrowRight className="w-4 h-4 rotate-180" aria-hidden="true" />
                                 </button>
-                                <div className="flex items-center space-x-1">
+                                <div className="flex max-w-full flex-wrap items-center justify-center gap-1">
                                     {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
                                         <button
                                             key={p}
                                             type="button"
                                             onClick={() => handlePageChange(p)}
                                             aria-current={page === p ? 'page' : undefined}
-                                            className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${page === p
+                                            className={`w-8 h-8 flex-shrink-0 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${page === p
                                                 ? 'bg-blue-600 text-white'
                                                 : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                                                 }`}
@@ -604,7 +604,7 @@ const RebalanceHistory: React.FC<RebalanceHistoryProps> = ({ portfolioId, isLoad
                                     onClick={() => handlePageChange(Math.min(totalPages, page + 1))}
                                     disabled={page === totalPages}
                                     aria-label={rebalanceHistoryCopy.nextPage}
-                                    className="p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                                    className="flex-shrink-0 p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                                 >
                                     <ArrowRight className="w-4 h-4" aria-hidden="true" />
                                 </button>

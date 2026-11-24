@@ -768,7 +768,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigate, publicKey }) => {
             {/* Price Ticker Banner */}
             <PriceTicker />
 
-            <div className="p-6 max-w-7xl mx-auto">
+            <div className="p-3 max-w-7xl mx-auto sm:p-6">
                 {/* Tab Navigation */}
                 <div className="mb-6 border-b border-gray-200 dark:border-gray-700">
                     <nav className="flex space-x-8" aria-label="Dashboard sections">
@@ -823,8 +823,8 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigate, publicKey }) => {
 
                 {/* Overview Tab */}
                 {activeTab === 'overview' && (
-                    <div className="grid lg:grid-cols-3 gap-6">
-                        <div className="lg:col-span-2 space-y-6">
+                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                        <div className="lg:col-span-2 min-w-0 space-y-6">
                             {/* Portfolio Value Chart */}
                             {balancesUnavailable ? (
                                 <div className="rounded-xl bg-white p-6 dark:bg-gray-800">

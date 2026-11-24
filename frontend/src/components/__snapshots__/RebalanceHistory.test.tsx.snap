@@ -4,32 +4,40 @@ exports[`RebalanceHistory > snapshots > matches snapshot in empty state 1`] = `
 <div>
   <section
     aria-labelledby="rebalance-history-heading"
-    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm"
+    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm min-w-0"
   >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="sr-only"
+      role="status"
+    />
     <header
-      class="p-6 border-b border-gray-200 dark:border-gray-700"
+      class="p-2 border-b border-gray-200 dark:border-gray-700 sm:p-6"
     >
       <div
-        class="flex items-center justify-between"
+        class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"
       >
-        <div>
+        <div
+          class="min-w-0"
+        >
           <h2
-            class="text-lg font-semibold text-gray-900 dark:text-white"
+            class="text-lg font-semibold text-gray-900 dark:text-white break-words"
             id="rebalance-history-heading"
           >
             Rebalance history
           </h2>
           <p
-            class="text-sm text-gray-500 dark:text-gray-400 mt-1"
+            class="text-sm text-gray-500 dark:text-gray-400 mt-1 break-words"
           >
             Recent portfolio rebalancing activities with risk management
           </p>
         </div>
         <div
-          class="flex items-center space-x-3"
+          class="flex flex-wrap items-center gap-2 sm:justify-end"
         >
           <button
-            class="border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 px-3 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+            class="border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 px-3 py-2 rounded-lg text-sm transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             disabled=""
             type="button"
           >
@@ -38,12 +46,12 @@ exports[`RebalanceHistory > snapshots > matches snapshot in empty state 1`] = `
         </div>
       </div>
       <div
-        class="p-6 text-center text-gray-500 dark:text-gray-400"
+        class="p-2 text-center text-gray-500 dark:text-gray-400 sm:p-6"
         role="status"
       >
         <svg
           aria-hidden="true"
-          class="w-12 h-12 mx-auto mb-4 text-gray-300 dark:text-gray-600"
+          class="lucide lucide-clock w-12 h-12 mx-auto mb-4 text-gray-300 dark:text-gray-600"
           fill="none"
           height="24"
           stroke="currentColor"
@@ -59,8 +67,8 @@ exports[`RebalanceHistory > snapshots > matches snapshot in empty state 1`] = `
             cy="12"
             r="10"
           />
-          <polyline
-            points="12 6 12 12 16 14"
+          <path
+            d="M12 6v6l4 2"
           />
         </svg>
         <p>
@@ -81,51 +89,80 @@ exports[`RebalanceHistory > snapshots > matches snapshot in error state 1`] = `
 <div>
   <section
     aria-labelledby="rebalance-history-heading"
-    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm"
+    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm min-w-0"
   >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="sr-only"
+      role="status"
+    />
     <header
-      class="p-6 border-b border-gray-200 dark:border-gray-700"
+      class="p-2 border-b border-gray-200 dark:border-gray-700 sm:p-6"
     >
       <div
-        class="flex items-center justify-between"
+        class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"
       >
-        <div>
+        <div
+          class="min-w-0"
+        >
           <h2
-            class="text-lg font-semibold text-gray-900 dark:text-white"
+            class="text-lg font-semibold text-gray-900 dark:text-white break-words"
             id="rebalance-history-heading"
           >
             Rebalance history
           </h2>
           <p
-            class="text-sm text-gray-500 dark:text-gray-400 mt-1"
+            class="text-sm text-gray-500 dark:text-gray-400 mt-1 break-words"
           >
             Recent portfolio rebalancing activities with risk management
           </p>
         </div>
         <div
-          class="flex items-center space-x-3"
+          class="flex flex-wrap items-center gap-2 sm:justify-end"
         >
           <button
-            class="border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 px-3 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+            class="border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 px-3 py-2 rounded-lg text-sm transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             disabled=""
             type="button"
           >
             Export CSV
           </button>
-          <div
-            class="text-sm text-red-600 bg-red-50 dark:bg-red-900/30 px-3 py-1 rounded"
-          >
-            Failed to load rebalance history
-          </div>
         </div>
       </div>
       <div
-        class="p-6 text-center text-gray-500 dark:text-gray-400"
+        aria-atomic="true"
+        aria-live="assertive"
+        class="mt-4 flex flex-wrap items-center gap-2 text-sm text-red-600 bg-red-50 dark:bg-red-900/30 px-3 py-2 rounded"
+        role="alert"
+      >
+        <span
+          class="min-w-0 break-words"
+        >
+          Failed to load rebalance history
+        </span>
+        <button
+          aria-label="Retry loading rebalance history"
+          class="font-medium underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded px-1 disabled:opacity-50"
+          type="button"
+        >
+          Retry
+        </button>
+        <button
+          aria-label="Dismiss rebalance history error"
+          class="font-medium underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded px-1"
+          type="button"
+        >
+          Dismiss
+        </button>
+      </div>
+      <div
+        class="p-2 text-center text-gray-500 dark:text-gray-400 sm:p-6"
         role="status"
       >
         <svg
           aria-hidden="true"
-          class="w-12 h-12 mx-auto mb-4 text-gray-300 dark:text-gray-600"
+          class="lucide lucide-clock w-12 h-12 mx-auto mb-4 text-gray-300 dark:text-gray-600"
           fill="none"
           height="24"
           stroke="currentColor"
@@ -141,8 +178,8 @@ exports[`RebalanceHistory > snapshots > matches snapshot in error state 1`] = `
             cy="12"
             r="10"
           />
-          <polyline
-            points="12 6 12 12 16 14"
+          <path
+            d="M12 6v6l4 2"
           />
         </svg>
         <p>
@@ -163,8 +200,10 @@ exports[`RebalanceHistory > snapshots > matches snapshot in loading state 1`] = 
 <div>
   <div
     aria-busy="true"
+    aria-label="Loading rebalance history"
     class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6"
     data-testid="rebalance-history-skeleton"
+    role="status"
   >
     <div
       class="animate-pulse"
@@ -194,32 +233,40 @@ exports[`RebalanceHistory > snapshots > matches snapshot with fetched history da
 <div>
   <section
     aria-labelledby="rebalance-history-heading"
-    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm"
+    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm min-w-0"
   >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="sr-only"
+      role="status"
+    />
     <header
-      class="p-6 border-b border-gray-200 dark:border-gray-700"
+      class="p-2 border-b border-gray-200 dark:border-gray-700 sm:p-6"
     >
       <div
-        class="flex items-center justify-between"
+        class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"
       >
-        <div>
+        <div
+          class="min-w-0"
+        >
           <h2
-            class="text-lg font-semibold text-gray-900 dark:text-white"
+            class="text-lg font-semibold text-gray-900 dark:text-white break-words"
             id="rebalance-history-heading"
           >
             Rebalance history
           </h2>
           <p
-            class="text-sm text-gray-500 dark:text-gray-400 mt-1"
+            class="text-sm text-gray-500 dark:text-gray-400 mt-1 break-words"
           >
             Recent portfolio rebalancing activities with risk management
           </p>
         </div>
         <div
-          class="flex items-center space-x-3"
+          class="flex flex-wrap items-center gap-2 sm:justify-end"
         >
           <button
-            class="border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 px-3 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+            class="border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 px-3 py-2 rounded-lg text-sm transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             type="button"
           >
             Export CSV
@@ -227,74 +274,30 @@ exports[`RebalanceHistory > snapshots > matches snapshot with fetched history da
         </div>
       </div>
       <div
-        class="p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-        role="listitem"
+        aria-label="Rebalance history events"
+        role="list"
       >
         <div
-          class="flex items-start justify-between"
+          aria-label="Event 1 of 1: Automatic Rebalancing, completed, 2 trades, Jan 15, 2025 at 10:30:00 AM"
+          class="p-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-inset rounded-lg sm:p-6"
+          role="listitem"
+          tabindex="0"
         >
           <div
-            class="flex items-start space-x-4"
+            class="flex items-start gap-2 sm:gap-4"
           >
             <div
-              class="flex-shrink-0"
+              class="flex min-w-0 flex-1 items-start gap-2 sm:gap-4"
             >
               <div
-                class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center"
-              >
-                <svg
-                  class="w-5 h-5 text-green-600"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M22 11.08V12a10 10 0 1 1-5.93-9.14"
-                  />
-                  <polyline
-                    points="22 4 12 14.01 9 11.01"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div
-              class="flex-1 min-w-0"
-            >
-              <div
-                class="flex items-center space-x-2 mb-2"
-              >
-                <span
-                  class="font-medium text-gray-900 dark:text-white"
-                >
-                  Automatic Rebalancing
-                </span>
-                <span
-                  class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded"
-                >
-                  2
-                   trade
-                  s
-                </span>
-                <span
-                  class="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-1 rounded"
-                >
-                  Off-chain
-                </span>
-              </div>
-              <div
-                class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-2"
+                class="flex-shrink-0"
               >
                 <div
-                  class="flex items-center"
+                  class="h-[40px] w-[40px] bg-green-100 rounded-full flex items-center justify-center"
                 >
                   <svg
-                    class="w-4 h-4 mr-1"
+                    aria-hidden="true"
+                    class="lucide lucide-circle-check-big lucide-check-circle w-5 h-5 text-green-600"
                     fill="none"
                     height="24"
                     stroke="currentColor"
@@ -305,111 +308,154 @@ exports[`RebalanceHistory > snapshots > matches snapshot with fetched history da
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <rect
-                      height="18"
-                      rx="2"
-                      ry="2"
-                      width="18"
-                      x="3"
-                      y="4"
+                    <path
+                      d="M21.801 10A10 10 0 1 1 17 3.335"
                     />
-                    <line
-                      x1="16"
-                      x2="16"
-                      y1="2"
-                      y2="6"
-                    />
-                    <line
-                      x1="8"
-                      x2="8"
-                      y1="2"
-                      y2="6"
-                    />
-                    <line
-                      x1="3"
-                      x2="21"
-                      y1="10"
-                      y2="10"
+                    <path
+                      d="m9 11 3 3L22 4"
                     />
                   </svg>
+                </div>
+              </div>
+              <div
+                class="flex-1 min-w-0"
+              >
+                <div
+                  class="flex flex-wrap items-center gap-2 mb-2"
+                >
                   <span
-                    class="font-medium"
+                    class="font-medium text-gray-900 dark:text-white break-words"
                   >
-                    Jan 15, 2025
+                    Automatic Rebalancing
                   </span>
                   <span
-                    class="mx-1"
+                    class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded whitespace-nowrap"
                   >
-                    at
+                    2
+                     trade
+                    s
                   </span>
+                  <span
+                    class="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-1 rounded whitespace-nowrap"
+                  >
+                    Off-chain
+                  </span>
+                </div>
+                <div
+                  class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 dark:text-gray-400 mb-2"
+                >
+                  <div
+                    class="flex flex-wrap items-center gap-x-1"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-calendar w-4 h-4 mr-1"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8 2v3"
+                      />
+                      <path
+                        d="M16 2v3"
+                      />
+                      <rect
+                        height="18"
+                        rx="2"
+                        width="18"
+                        x="3"
+                        y="3"
+                      />
+                      <path
+                        d="M3 9h18"
+                      />
+                    </svg>
+                    <span
+                      class="font-medium"
+                    >
+                      Jan 15, 2025
+                    </span>
+                    <span>
+                      at
+                    </span>
+                    <span>
+                      10:30:00 AM
+                    </span>
+                  </div>
+                  <span
+                    class="hidden text-gray-300 dark:text-gray-600 sm:inline"
+                  >
+                    •
+                  </span>
+                  <div
+                    class="flex items-center"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-clock w-4 h-4 mr-1"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                      />
+                      <path
+                        d="M12 6v6l4 2"
+                      />
+                    </svg>
+                    678 days ago
+                  </div>
+                </div>
+                <div
+                  class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 dark:text-gray-400 mb-2"
+                >
                   <span>
-                    11:30:00 AM
+                    Gas: 
+                    0.02 XLM
                   </span>
                 </div>
-                <span
-                  class="text-gray-300 dark:text-gray-600"
-                >
-                  •
-                </span>
                 <div
-                  class="flex items-center"
-                >
-                  <svg
-                    class="w-4 h-4 mr-1"
-                    fill="none"
-                    height="24"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10"
-                    />
-                    <polyline
-                      points="12 6 12 12 16 14"
-                    />
-                  </svg>
-                  529 days ago
-                </div>
+                  class="flex flex-wrap items-center gap-2 mb-2"
+                />
               </div>
-              <div
-                class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-2"
-              >
-                <span>
-                  Gas: 
-                  0.02 XLM
-                </span>
-              </div>
-              <div
-                class="flex items-center space-x-2 mb-2"
-              />
             </div>
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-arrow-right hidden w-4 h-4 flex-shrink-0 text-gray-400 mt-2 sm:block"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 12h14"
+              />
+              <path
+                d="m12 5 7 7-7 7"
+              />
+            </svg>
           </div>
-          <svg
-            class="w-4 h-4 text-gray-400 mt-2"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 12h14"
-            />
-            <path
-              d="m12 5 7 7-7 7"
-            />
-          </svg>
         </div>
       </div>
     </header>
@@ -417,10 +463,10 @@ exports[`RebalanceHistory > snapshots > matches snapshot with fetched history da
       class="p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50"
     >
       <div
-        class="flex flex-col sm:flex-row items-center justify-between gap-4"
+        class="flex flex-col items-center gap-4 sm:flex-row sm:justify-between"
       >
         <div
-          class="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400"
+          class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center text-sm text-gray-600 dark:text-gray-400 sm:justify-start sm:text-left"
         >
           <span>
             Showing 1 of 0 rebalances
