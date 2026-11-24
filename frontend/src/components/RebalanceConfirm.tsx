@@ -38,7 +38,6 @@ function RebalanceReview({ portfolioId, onClose, onSuccess }: Omit<RebalanceConf
             boundaryStatusRef.current?.focus()
         }
     }, [plan, isError])
-=======
 
     useEffect(() => {
         const timer = setInterval(() => setNow(Date.now()), 15000)
